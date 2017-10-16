@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+        .panel{
+            width: 80% !important;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:50px;
+            border-color: #8FBCBF;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        body{ background-image: url('../images/detail.jpg');
+            /*background-position: center;
+            background-repeat:no-repeat;*/
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8"/>
+    <title>Recipe details</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">Easy <span class="subhead">Yummies</span></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="nav-item active"><a href="/recipes">All Recipes</a></li>
+                <li class="nav-item"><a href="/publish">Share Recipe</a></li>
+                <li class="nav-item"><a href="/best">Recommendation</a></li>
+                <li class="nav-item"><a href="/users">Community</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a href="/myprofile">My Profile</a>
+                </li>
+                <li >
+                    <form class="signout" data-th-action="@{/logout}"  method="post">
+                        <button type="submit" name="action" value="Sign Out" class="btn btn-info btn-sm" style="margin-top: 10px;margin-bottom: 10px">Sign Out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="panel">
+    <div class="panel-heading" style="background-color: #8FBCBF"><span data-th-text="${recipe.name}" style="font-family: 'Lato', sans-serif; font-size:24px;color: #FFFFFF">Title</span></div>
+    <table class = "table">
+        <thead>
+          <tr>
+              <th>Recipe Type</th>
+              <th>Calories</th>
+              <th>Cooking Time</th>
+              <th>Ingredients</th>
+              <th>Instructions</th>
+              <th>Shared By</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-th-each="r : ${recipe}">
+            <td data-th-text="${r.recipeType}"></td>
+            <td data-th-text="${r.calories}"></td>
+            <td data-th-text="${r.timeNeed}"></td>
+            <td>
+                <ul>
+                    <li data-th-each="ingredient : ${r.ingredients}" data-th-text="${ingredient}"></li>
+                </ul>
+            </td>
+            <td>
+                <ol>
+                    <li data-th-each="d : ${r.description}" data-th-text="${d}"></li>
+                </ol>
+            </td>
+            <td>
+                <a data-th-href="@{'/users/'+|${recipe.author}}|"><span data-th-text="${recipe.author}"></span> </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr/>
+    <div class="panel-body">
+        <button type="button" class="btn btn-sm" data-toggle="collapse" data-target="#rating" style="background-color:#8FBCBF; color:#FFFFFF">Rating history</button>
+        <div id="rating" class="collapse">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>UserId</th>
+                    <th>Stars</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-th-each="rating : ${ratings}">
+                    <td data-th-text="${rating.ratingPk.UserId}"></td>
+                    <td data-th-text="${rating.score}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div class="panel-body">
+    <div class="stars">
+     <form data-th-action="@{/recipes/{id}/rate(id=${recipe.id})}" name="addRatingForm" method="post">
+        <input class="star star-5" id="star-5" type="radio" name="score" value="5" title="Awesome"/>
+        <label class="star star-5" for="star-5" style="font-size: 12px">5</label>
+        <input class="star star-4" id="star-4" type="radio" name="score" value="4" title="Pretty Good"/>
+        <label class="star star-4" for="star-4" style="font-size: 12px">4</label>
+        <input class="star star-3" id="star-3" type="radio" name="score" value="3" title="Meh"/>
+        <label class="star star-3" for="star-3" style="font-size: 12px">3</label>
+        <input class="star star-2" id="star-2" type="radio" name="score" value="2" title="Kinda bad"/>
+        <label class="star star-2" for="star-2" style="font-size: 12px">2</label>
+        <input class="star star-1" id="star-1" type="radio" name="score" value="1" title="Sucks"/>
+        <label class="star star-1" for="star-1" style="font-size: 12px">1</label>
+         <br/>
+         <input type="submit" value="Rate recipe" class="btn btn-info btn-xs"/>
+     </form>
+  </div>
+</div>
+</div>
+</body>
+</html>

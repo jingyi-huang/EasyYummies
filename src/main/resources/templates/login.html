@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Log in</title>
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">Easy <span class="subhead">Yummies</span></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/recipes">All Recipes</a></li>
+                <li class="nav-item"><a href="/publish">Share Recipe</a></li>
+                <li class="nav-item"><a href="/best">Recommendation</a></li>
+                <li class="nav-item"><a href="/users">Community</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active"><a href="/login">Log In</a></li>
+                <li><a href="/signup">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="wrapper">
+
+    <form class="form-signin" data-th-action="@{/login}" method ="post">
+        <input type="text" class="form-control" name="username" placeholder="Username" required="" autofocus="" />
+        <div class="center-block" style="height: 25px"></div>
+        <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+        <div class="center-block" style="height: 30px"></div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+    </form>
+    <div class="warning">
+        <div data-th-if="${param.error}" class="alert alert-warning alert-dismissible">
+           <strong>Error!</strong> Invalid username or password.
+        </div>
+        <div data-th-if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+        </div>
+    </div>
+</div>
+</body>
+</html>

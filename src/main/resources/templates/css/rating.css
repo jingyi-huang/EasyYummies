@@ -1,0 +1,49 @@
+/******this is referenced from https://codepen.io/jamesbarnett/pen/vlpkh *****/
+
+.signout{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel{
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+    border-color: #8FBCBF;
+    border-style: solid;
+    border-width: 2px;
+}
+
+/*body{ background-image: url('../images/detail.jpg');
+    background-position: center;
+    background-repeat:no-repeat;
+}*/
+
+
+/*div.stars {
+    width: 270px;
+    display: inline-block;
+}
+
+input.star { display: none; }
+
+label.star {
+    float: right;
+    padding: 10px;
+    font-size: 16px;
+    color: #444;
+    transition: all .2s;
+}
+
+input.star:checked ~ label.star:before {
+    content: '\f005';
+    color: #FD4;
+    transition: all .25s;
+}
+
+input.star-5:checked ~ label.star:before {
+    color: #FE7;
+    text-shadow: 0 0 20px #952;
+}*/
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <style>
+        .signout{
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .panel{
+            width: 80% !important;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top:50px;
+            border-color: #8FBCBF;
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        body{ background-image: url('../images/pancake.jpg');
+            /*background-size: cover;*/
+            background-position: center;
+            background-repeat:no-repeat;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Community</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">Easy <span class="subhead">Yummies</span></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="/recipes">All Recipes</a></li>
+                <li class="nav-item"><a href="/publish">Share Recipe</a></li>
+                <li class="nav-item"><a href="/best">Recommendation</a></li>
+                <li class="nav-item active"><a href="/users">Community</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a href="/myprofile">My Profile</a>
+                </li>
+                <li >
+                    <form class="signout" data-th-action="@{/logout}"  method="post">
+                        <button type="submit" name="action" value="Sign Out" class="btn btn-info btn-sm">Sign Out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="panel panel-default">
+            <div class="panel-heading" style="background-color: #8FBCBF;font-family: 'Lato', sans-serif; font-size:20px;color: #FFFFFF">User Lists</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>UserID</th>
+                        <th>Username</th>
+                        <th>City</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-th-each="user: ${users}">
+                        <td data-th-text="${user.userId}"></td>
+                        <td>
+                            <a data-th-href="@{'/users/'+|${user.userId}}|"><span data-th-text="${user.UserName}"></span> </a>
+                        </td>
+                        <td data-th-text="${user.city}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+
+</body>
+</html>

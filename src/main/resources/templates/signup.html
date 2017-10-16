@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Sign Up</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">Easy <span class="subhead">Yummies</span></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="nav-item active"><a href="/recipes">All Recipes</a></li>
+                <li class="nav-item"><a href="/publish">Share Recipe</a></li>
+                <li class="nav-item"><a href="/best">Recommendation</a></li>
+                <li class="nav-item"><a href="/users">Community</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Log In</a></li>
+                <li class="nav-item active"><a href="/signup">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="signcontainer">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <form class = "form-signup" method="POST" data-th-action="@{/users/add}" role="form">
+                    <div class="form-group">
+                        <h2>Create Your account</h2>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for= "username" >Username</label>
+                        <input  id="username" type="text" maxlength="50" name="userName" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="email">Email</label>
+                        <input id="email" type="email" maxlength="50" name="email" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="city">City</label>
+                        <input id="city" type="text" maxlength="50" name="city" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Password</label>
+                        <input id="password" type="password" maxlength="25" name="password" class="form-control" placeholder="at least 6 characters" length="40"/>
+                    </div>
+                    <!--<div class="form-group">
+                        <label class="control-label" for="signupPasswordagain">Password again</label>
+                        <input id="signupPasswordagain" type="password" maxlength="25" class="form-control"/>
+                    </div>-->
+                    <div class="form-group">
+                        <button id="submit" type="submit" class="btn btn-info btn-block">Create your account</button>
+                    </div>
+                    <p>Already have an account? <a href="/login">Sign in</a></p>
+                </form>
+            </div>
+       </div>
+    </div>
+</div>
+
+
+</body>
+</html>

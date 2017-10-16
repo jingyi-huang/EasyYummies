@@ -1,0 +1,19 @@
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/webproject
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  thymleaf:
+    mode: LEGACYHTML5
+    cache: false
+
+
+

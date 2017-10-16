@@ -1,0 +1,20 @@
+.signout{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel{
+    width: 80% !important;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:50px;
+    border-color: #8FBCBF;
+    border-style: solid;
+    border-width: 2px;
+}
+
+body{ background-image: url('../images/pancake.jpg');
+    /*background-size: cover;*/
+    background-position: center;
+    background-repeat:no-repeat;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <title>Edit My Profile</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/home">Easy <span class="subhead">Yummies</span></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="nav-item"><a href="/recipes">All Recipes</a></li>
+                <li class="nav-item"><a href="/publish">Share Recipe</a></li>
+                <li class="nav-item"><a href="/best">Recommendation</a></li>
+                <li class="nav-item"><a href="/users">Community</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item active">
+                    <a href="/myprofile">My Profile</a>
+                </li>
+
+                <li >
+                    <form class="signout" data-th-action="@{/logout}"  method="post">
+                        <button type="submit" name="action" value="Sign Out" class="btn btn-info btn-sm" style="margin-top: 10px;margin-bottom: 10px">Sign Out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="panel panel-primary" style="width:50%; margin-left: auto; margin-right:auto;margin-top:40px">
+    <div class="panel-body">
+        <div class="imgcontainer" style="text-align: center">
+        <img class="img-circle" style="width:20%; height: 20%" src="../images/profile.png"/>
+        </div>
+       <form data-th-action="@{/users/{userId}/edit(userId=${user.userId})}" data-th-object="${user}"
+             data-th-method="put" role="form">
+             <div class="form-group" style="text-align: center">
+
+            <span style="text-align: center;font-family: 'Lato', sans-serif; font-size:14px;color: #708090" data-th-text="${user.username}"></span>
+             </div>
+             <div class="form-group">
+                <label class="control-label" for="email">Email</label>
+                <input id="email" type="email" maxlength="50" name="email" class="form-control"/>
+             </div>
+             <div class="form-group">
+                 <label class="control-label" for="city">City</label>
+                 <input id="city" type="text" maxlength="50" name="city" class="form-control"/>
+             </div>
+           <div class="form-group">
+               <label class="control-label" for="password">Password</label>
+               <input id="password" type="password" maxlength="25" name="password" class="form-control" placeholder="at least 6 characters" length="40"/>
+           </div>
+           <div class="form-group">
+               <button id="submit" type="submit" class="btn btn-info btn-bloack">Update Profile</button>
+           </div>
+       </form>
+    </div>
+</div>
+
+</body>
+</html>
